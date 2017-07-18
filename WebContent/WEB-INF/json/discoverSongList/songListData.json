@@ -1,0 +1,77 @@
+{
+    "updated": "false",
+    "hitLists": [
+        {
+            "songListId": "1",
+            "listName": "聆",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "小梦大半",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-1.jpg"
+        },
+        {
+            "songListId": "2",
+            "listName": "尔雅",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "温文尔雅",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-2.jpg"
+        },
+        {
+            "songListId": "3",
+            "listName": "花白",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "纯白无暇",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-3.jpg"
+        },
+        {
+            "songListId": "4",
+            "listName": "暌隔",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "闲梦远",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-4.jpg"
+        },
+        {
+            "songListId": "5",
+            "listName": "境",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "如也",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-5.jpg"
+        },
+        {
+            "songListId": "6",
+            "listName": "天尽头",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "何处有相求",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-6.jpg"
+        },
+        {
+            "songListId": "7",
+            "listName": "感觉体验馆",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "眼聆",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-7.jpg"
+        },
+        {
+            "songListId": "8",
+            "listName": "没有人",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "在等着没有人",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-8.jpg"
+        },
+        {
+            "songListId": "9",
+            "listName": "玉陨",
+            "userId": "2",
+            "userName": "ixenos",
+            "listIntro": "香消",
+            "songListImgSrc": "/LiveInYouth/images/discoverSongList/songList/songList-9.jpg"
+        }
+    ]
+}

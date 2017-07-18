@@ -1,0 +1,312 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>登录 | LiveInYouth </title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Credit Login / Register Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript">addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- 浏览器标签图标 facicon.ico -->
+<link rel="icon" href="/LiveInYouth/favicon.ico" type="image/x-icon" />  
+<!-- //浏览器标签图标 facicon.ico -->
+
+<!-- 常用的css Custom Theme files -->
+<link href="login/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css" media="all">
+<link href="login/css/popuo-box.css" rel="stylesheet" type="text/css"
+	media="all" />
+<link href="login/css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<!-- //常用的css Custom Theme files -->
+
+<!-- 谷歌字体 web font -->
+<link href="login/fonts/googleapis-fonts/fonts.css?family=Oswald:400,700"
+	rel="stylesheet">
+<link href="login/fonts/googleapis-fonts/fonts.css?family=Open+Sans:300,400,600,700"
+	rel="stylesheet">
+<!-- //谷歌字体 web font -->
+
+</head>
+<body>
+	<h1>Let's LiveInYouth</h1>
+	<div class="main-agileits">
+		<!--form-stars-here-->
+		<form id="loginForm" method="post">
+			<div class="form-w3-agile">
+				<h2>登录</h2>
+				<div class="form-sub-w3">
+					<input class="loginInfo" type="text" name="userName" placeholder="用户名或用户邮箱"
+						required="required" />
+					<div class="icon-w3">
+						<i class="fa fa-user" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="form-sub-w3">
+					<input class="loginInfo" type="password" name="userPassword" placeholder="密码"
+						required="required" />
+					<div class="icon-w3">
+						<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+					</div>
+				</div>
+				<label class="checkbox">
+				<input class="loginInfo" type="checkbox" name="autoLogin" value="true" checked="checked">
+						<p>自动登录</p>
+				</label>
+				<p class="p-bottom-w3ls">
+							<!-- 锚点链接到注册模块 -->
+					还没有账号?<a class="w3_play_icon1" href="#small-dialog1"> 加入我们</a>
+				</p>
+
+				<div class="submit-w3l">
+					<input id="loginBtn" type="submit" value="登录">
+				</div>
+			</div>
+		</form>
+		<!--//form-ends-here-->
+	</div>
+	
+	<!-- 注册模块 -->
+	<!-- 默认隐藏的模块 class="mfp-hide" -->
+	<div id="small-dialog1" class="mfp-hide">
+		<div class="contact-form1">
+			<form id="registForm" method="post">
+				<div class="contact-w3-agileits">
+					<h3>欢迎加入</h3>
+					<div class="form-sub-w3ls">
+						<input class="registInfo" name="userName" placeholder="账号，大于5位的英文和数字" type="text" required="required">
+						<div class="icon-agile">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="form-sub-w3ls">
+						<input class="registInfo" name="userEmail" placeholder="邮箱，接收订阅信息也用于登录" class="mail" type="email"
+							required="required">
+						<div class="icon-agile">
+							<i class="fa fa-envelope-o" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="form-sub-w3ls">
+						<input class="registInfo" name="userPassword" placeholder="密码，大于五位的英文和数字" type="password" required="required">
+						<div class="icon-agile">
+							<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="form-sub-w3ls">
+						<input class="registInfo" name="repeatedPassword" placeholder="请重复密码" type="password" required="required">
+						<div class="icon-agile">
+							<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+				<div class="login-check">
+					<label class="checkbox"> 
+					<input class="registInfo" type="checkbox" name="acceptFlag" value="true" checked="checked" required="required">
+						<p>我已查看并同意 <a href="http://github.com/ixenos/" target="_blank">相关服务条款和隐私政策</a></p>
+					</label>
+				</div>
+				<div class="submit-w3l">
+					<input type="submit" value="注册">
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- copyright -->
+	<div class="copyright w3-agile">
+		<p>
+			Copyright © 2017 LiveInYouth. All rights reserved.<br />
+			<a href="http://github.com/ixenos/" target="_blank">历经青年公司</a> 版权所有
+		</p>
+	</div>
+	<!-- //copyright -->
+	
+	<script type="text/javascript" src="login/js/jquery-2.1.4.min.js"></script>
+	<!-- 弹窗脚本 -->
+	<script src="login/js/jquery.magnific-popup.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.w3_play_icon,.w3_play_icon1,.w3_play_icon2').magnificPopup({
+				type : 'inline', //内容类型 
+				fixedContentPos : false, //固定内容位置
+				fixedBgPos : true, //固定背景位置
+				overflowY : 'auto', //竖向scrollBar
+				closeBtnInside : true, //关闭按钮，没有时点击背景关闭
+				preloader : false, //监听器
+				midClick : true, //鼠标中键起作用
+				removalDelay : 300, //关闭延时，给用户一种关闭资源的感觉
+				mainClass : 'my-mfp-zoom-in' //增加的类
+			});
+		});
+	</script>
+	<!-- //注册窗口弹出 -->
+	
+	<!-- 注册regist.js -->
+	<script type="text/javascript">
+	$(function() {
+		$("#registForm").submit(function() {
+			//不使用ID的写法
+			var userName = $("input[class='registInfo'][name='userName']").val();
+			var userEmail = $("input[class='registInfo'][name='userEmail']").val();
+			var userPassword = $("input[class='registInfo'][name='userPassword']").val();
+			var repeatedPassword = $("input[class='registInfo'][name='repeatedPassword']").val();
+			var acceptFlag = $("input[class='registInfo'][name='acceptFlag']").val();
+			/*
+				密码重复和接受协议需要分开提醒
+			*/
+			if(userPassword == repeatedPassword){
+				if(acceptFlag){
+					var url = "/LiveInYouth/Regist";
+					var data = new Object();
+					data.userName = userName;
+					data.userEmail = userEmail;
+					data.userPassword = userPassword;
+					data = JSON.stringify(data);//将对象转化成JSON的字符串形式
+					
+					alert("开始注册"); //TODO 测试密码重复功能
+					$.ajax({
+						cache : true,
+						type : "POST",
+						url : url,
+						data : data,
+						async : true,
+						success : function(data) {
+							/*
+								true：注册成功；false：注册失败
+	 *							successInsert:插入成功;
+	  							notInsert:插入失败;
+	  							userExist:账号已存在;
+	  							wrongFormat:格式错误
+							*/
+							//JSON字符串在这里被$.ajax自动转换成JSON对象,因为后端声明了MIME为application/json，charset=utf-8 
+							if (data.success == "true") {
+								alert("注册成功，请登录");
+								window.location = "/LiveInYouth";
+							} else {
+								if(data.type == "notInsert"){
+									alert("插入失败");
+								}
+								if(data.type == "userExist"){
+									alert("账号已存在");
+								}
+								if(data.type == "wrongFormat"){
+									alert("格式错误");
+								}
+							}
+						}
+					});
+				}else{
+					alert("未接受协议不能注册")
+				}
+			}else{
+				alert("两次输入密码不一致");
+			}
+			return false; //阻止表单默认行为，提交表单
+		});
+	});
+	</script>
+	<!-- //注册regist.js -->
+
+	<!-- 自动登录autoLogin.js -->
+	<script src="/LiveInYouth/util/js/cookie/js.cookie-2.1.4.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		var userName = Cookies.get("userName"); //一般一个用户一个账户，多账户页面会有二义性，所以cookie只能有一个username，session的属性也只能有一个username
+		/*
+			不必验证sessionID是否非空，因为状态是由后台在管理，没有sessionID或过期时，lvy后端的自动登录流程会进行判断（用session.isNew） 
+		*/
+		//var sessionId = Cookies.get("JSESSIONID");//只能取重写的JSESSIONID，不能取Max-Age为session的JSESSIONID（即寿命只是浏览器会话，关闭就丢失会话)
+		//if(sessionId==undefined){} 
+		if (userName!=undefined) { //非空保证
+			var data = new Object();
+			//data.sessionId = sessionId; //根本就不用取，JSESSIONID存在请求报文头的Cookie字段中，况且后台调用getSession会自动匹配id
+			data.userName = userName;
+			data = JSON.stringify(data); //转化后返回JSON字符串
+			var url = "/LiveInYouth/Login";
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : url,
+				data : data,
+				async : true,
+				success : function(data) {//JSON字符串在这里被$.ajax自动转换成JSON对象,因为后端声明了MIME为application/json，charset=utf-8 
+					if (data.success == "true") {
+						// alert("自动登录成功");
+						window.location = "/LiveInYouth/main/main.html";
+					} else { 
+						alert("自动登录失败，后台会话已关闭，请重新登录"); //TODO
+						//Cookies.remove("userName", { path:"/LiveInYouth" });// 没必要特地清除cookie，同名的自然会覆盖
+					}
+				}
+			});
+		}
+		//alert("不存在userName的cookie");//TODO
+	});
+	</script>
+	<!-- //自动登录autoLogin.js -->
+
+	<!-- 登录login.js -->
+	<script src="util/js/form/DataDeal.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		//文档加载完毕就开始监听submit事件，当于onSubmit事件 
+		$("#loginForm").submit(function() {
+			/*
+				这里不用清除cookie，因为登录的时候在后台会重写响应的Set-Cookie，重新设定这两个内容 
+			*/
+			//Cookies.remove("JSESSIONID", {path:"/LiveInYouth"});//登录前先清除cookie，以保证新的自动登录周期。
+			//Cookies.remove("userName", {path:"/LiveInYouth"});//不必要清除，因为清除
+			
+			//var url = "Login";
+			var url = "/LiveInYouth/Login";
+			var data = $('#loginForm').serialize();//其实只有少量信息的话，直接取也是可以的，序列化处理比较适合大表单
+			data = DataDeal.formUrlToJson(data);//序列化转JSON
+			$.ajax({
+				cache : true,
+				type : "POST",
+				url : url,
+				data : data,
+				async : true,
+				success : function(data) {
+					/*
+						true:登录成功；false：登陆失败
+						wrongFormat:数据格式错误，在前端输入限制的情况下发生的错误，可能有漏洞
+           				notExist:用户不存在 
+         				wrongPassword:账号密码错误 
+        				successLogin：验证成功
+					*/
+					//JSON字符串在这里被$.ajax自动转换成JSON对象,因为后端声明了MIME为application/json，charset=utf-8 
+					if (data.success == "true") {
+						//alert("登录成功");
+						//window.location = "main/main.html";//href发出get请求，浏览器对路径自动补全，加上主机/项目/前缀，如果前面有/，那么表示从容器根目录找，应该是/LiveInYouth/main/main.html
+						window.location = "/LiveInYouth/main/main.html";
+					} else {
+						if (data.type == "notExist") {
+							alert("账号不存在");
+						}
+						if (data.type == "wrongPassword") {
+							alert("密码错误");
+						}
+						if (data.type == "wrongFormat"){
+							//这个判断是给前端开发看的，说明表单限制功能不正常 
+							alert("输入账号或密码格式错误，账号密码只能 包含大小写字母、数字、.和_，账号也可以是邮箱");
+						}
+						if (data.type == "nullValue"){
+							alert("不允许空值，请重新登录");
+						}
+					}
+				}
+			});
+			return false; //阻止表单默认行为，提交表单
+		});
+	});
+	</script>
+	<!-- //登录login.js -->
+</body>
+</html>

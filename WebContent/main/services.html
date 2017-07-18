@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>LiveInYouth - 聆青</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<!-- 浏览器标签图标 facicon.ico -->
+	<link rel="icon" href="/LiveInYouth/favicon.ico" type="image/x-icon" />  
+	<!-- //浏览器标签图标 facicon.ico -->
+  	<!-- Facebook and Twitter integration -->
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+	<!-- google fonts -->
+	<link href='fonts/googleapis-fonts/fonts.css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	
+	
+	<!-- 我的聆青模块 -->
+	<body>
+		
+	<div class="fh5co-loader"></div>
+	
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2">
+					<div id="fh5co-logo"><a href="main.html">LiveInYouth.</a></div>
+				</div>
+				<div class="col-xs-10 text-right menu-1">
+					<!-- 无序列表 -->
+					<ul>
+						<!-- active类所在的列表元素会加亮强调 -->
+						<li><a href="main.html">发现音乐</a></li>
+						<li><a href="work.html">发现歌单</a></li>
+						<!-- 砍掉发现故事
+						<li><a href="story.html">发现故事</a></li>
+						 -->
+						<li><a href="fm.html">私人电台</a></li>
+						<li class="active">
+						<!-- <li class="has-dropdown active"> -->
+							<a href="services.html">我的聆青</a>
+							<!-- 
+							<ul class="dropdown">
+								<!-- 暂时砍掉
+								<li><a href="#">我的歌单</a></li>
+								<li><a href="#">我的故事</a></li>
+								<!-- 继续砍掉
+								<li>
+								<a id="exitLogin"  class="hidden" href="#">退出登录</a>
+								<a id="startLogin" class="" href="#">登录</a>
+								</li>
+							</ul>
+							 -->
+						</li>
+						<li><a href="about.html">关于聆青</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- 头面背景 -->
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_2.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>我的聆青</h1>
+							<h2>My <a href="services.html" target="_blank">Youth</a></h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<!-- 功能模块 -->
+	<div id="fh5co-services-section">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>LiveInYouth</h2>
+					<p>在此定制属于你的聆青</p>
+				</div>
+			</div>
+			<!-- 修改歌单 -->
+			<div id="modifyList" class="col-md-4 col-sm-4">
+				<div class="feature-center">
+					<span class="icon">
+						<img class="listCover" src=""></img>
+					</span>
+					<h3 class="listName">歌单</h3>
+					<p><a id="modifyListBtn" href="#modList-popup" class="btn btn-primary popupModListBtn">修改歌单</a></p>
+				</div>
+			</div>
+			<div id="createList" class="col-md-4 col-sm-4 hidden">
+				<div class="feature-center">
+					<span class="icon">
+						<i class="icon-help2"></i>
+					</span>
+					<h3>initial list</h3>
+					<p><a id="createListBtn" href="#modList-popup" class="btn btn-primary popupModListBtn">创建歌单</a></p>
+				</div>
+			</div>
+			<!-- //修改歌单 -->
+			<!-- 修改资料 -->
+			<!-- 订阅状态在修改资料中修改 -->
+			<div id="modifyData" class="col-md-4 col-sm-4">
+				<div class="feature-center">
+					<span class="icon">
+						<img class="userAvatar" src=""></img>
+					</span>
+					<h3 class="userName">用户</h3>
+					<p><a id="modifyDataBtn" href="#modUser-popup" class="btn btn-primary popupModUserBtn">修改资料</a></p>
+				</div>
+			</div>
+			<div id="createData" class="col-md-4 col-sm-4 hidden">
+				<div class="feature-center">
+					<span class="icon">
+						<i class="icon-help2"></i>
+					</span>
+					<h3>initial user</h3>
+					<p><a id="createDataBtn" href="#modUser-popup" class="btn btn-primary popupModUserBtn">创建资料</a></p>
+				</div>
+			</div>
+			<!-- //修改资料 -->
+			<div class="col-md-4 col-sm-4">
+				<div class="feature-center">
+					<span class="icon">
+						<i class="icon-power"></i>
+					</span>
+					<h3>登录状态</h3>
+					<p><a id="cancelLoginBtn" href="#" class="btn btn-primary">退出登录</a></p>
+				</div>
+			</div>
+			<!-- //manificPopup版本 -->  
+		</div>
+		<!-- //container -->
+	</div>
+	<!-- //功能模块 -->
+	
+<!-- popup模块 -->
+	<!-- 修改歌单popup -->
+	<div id="modList-popup" class="white-popup mfp-hide">
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label class="col-sm-2 control-label">名称</label>
+		    <div class="col-sm-4">
+		      <input class="form-control listName" id="modingListName" type="text" value="">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		   	<label class="col-sm-2 control-label">简介</label>
+		    <div class="col-sm-9">
+		      <input class="form-control listIntro" id="modingListIntro" type="text" value="">
+		    </div>
+		  </div>
+	    <div class="form-group">
+	      	<label class="col-sm-2 control-label">封面</label>
+	      	<div class="col-sm-10">
+			<!-- 上传图片服务
+				 <a class="btn btn-default">选择图片</a> -->
+				 <input type="file" id="listCoverFile" />
+				 <!-- 等待图片 -->
+				 <img src="/LiveInYouth/main/images/loader.gif" style="display:none" id="imgWait" />  
+	      	<!-- //上传图片服务 -->
+	      	</div>
+	    </div>
+	    <div class="form-group">
+	     	<label class="col-sm-2 control-label">曲目</label>
+	      	<div class="col-sm-5">
+	      	  	<a href="#modSong-popup" class="btn btn-default popupModSongBtn">上传曲目</a>
+	      	</div>
+	    </div>
+	    <div class="col-sm-12 text-center">
+	    	<div class="form-group">
+	        	<a id="modListDone" class="btn btn-success">完成</a>
+	    	</div>
+	    </div>
+		</form>
+	</div>
+	<!-- //修改歌单popup -->
+	<!-- 修改资料popup -->
+	<div id="modUser-popup" class="white-popup mfp-hide">
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label class="col-sm-2 control-label">名称</label>
+		    <div class="col-sm-4">
+		      <input class="form-control userName" id="modingUserName" type="text" value="">
+		    </div>
+		  </div>
+	    <div class="form-group">
+	      	<label class="col-sm-2 control-label">头像</label>
+	      	<div class="col-sm-10">
+			<!-- 上传图片服务 
+				<a class="btn btn-default">上传头像</a>
+				<a class="btn btn-success hidden">上传成功</a>-->
+				<input type="file" id="avatarFile" />
+				<!-- 等待图片 -->
+				 <img src="/LiveInYouth/main/images/loader.gif" style="display:none" id="imgWait2" />  
+	      	</div>
+	    </div>
+	    <!-- 砍掉订阅管理 
+	    <div class="form-group">
+	     	<label class="col-sm-2 control-label">订阅</label>
+	      	<div class="col-sm-5">
+	      		<!-- 点击后变成 btn-success
+	      	  <a id="cancelSubBtn" href="#" class="btn btn-default">取消订阅</a>
+	      	  <a id="subsBtn" href="#" class="btn btn-default hidden">订阅</a>
+	      	</div>
+	    </div>
+	     -->
+	    <div class="col-sm-12 text-center">
+	    	<div class="form-group">
+	        	<a id="modUserDone" class="btn btn-success">完成</a>
+	    	</div>
+	    </div>
+		</form>
+	</div>
+	<!-- //修改资料popup -->
+<!-- //popup模块 -->
+
+
+
+<!-- 修改歌曲popup模块 -->
+<div id="modSong-popup" class="white-popup mfp-hide">
+  <form class="form-horizontal" role="form">
+  	<!-- 上传歌曲 -->
+  	 <div class="form-group">
+	    <label class="col-sm-2 control-label">歌名</label>
+	    <div class="col-sm-9">
+	      <input class="form-control songName" id="modingSongName" type="text" value="">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	   	<label class="col-sm-2 control-label">歌手</label>
+	    <div class="col-sm-9">
+	      <input class="form-control artistName" id="modingArtistName" type="text" value="">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	  <label class="col-sm-2 control-label">专辑</label>
+	    <div class="col-sm-9">
+	      <input class="form-control albumName" id="modingAlbumName" type="text" value="">
+	    </div>
+	  </div>
+   	<div class="form-group">
+      	<label class="col-sm-2 control-label">上传</label>
+      	<div class="col-sm-10">
+			<input type="file" id="songFile" />
+			<!-- 等待图片 -->
+			<img src="/LiveInYouth/main/images/loader.gif" style="display:none" id="imgWait3" />  
+      	</div>
+	 </div>
+	 <!-- //上传歌曲 -->
+    <div class="col-sm-12 text-center">
+	   <div class="form-group">
+	       <a id="modSongDone" class="btn btn-success">完成</a>
+	   </div>
+	</div>
+  </form>
+</div>
+<!-- //修改歌曲模块 -->
+	
+	
+	
+<!-- subscribe订阅模块 -->
+	<div id="fh5co-started">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+					<h2>订阅我们</h2>
+					<p>欢迎订阅聆青 获取专属于你的感官世界</p>
+				</div>
+			</div>
+			<div class="row animate-box">
+				<!-- 已登录时 -->
+				<div id="loginSubs" class="col-md-8 col-md-offset-4 hidden">
+					<form class="form-inline">
+						<div class="col-md-6 col-sm-6">
+							<button id="subs" type="button" class="btn btn-default btn-block">订阅</button>
+						</div>
+					</form>
+				</div>
+				<!-- //已登录时 -->
+				<!-- 已登录并订阅 -->
+				<div id="hasSubs" class="col-md-8 col-md-offset-4 hidden">
+					<form class="form-inline">
+						<div class="col-md-6 col-sm-6">
+							<!-- 已订阅，disabled使其默认不可点击 -->
+							<button disabled="disabled" type="button" class="btn btn-default btn-block">已订阅</button>
+						</div>
+					</form>
+				</div>
+				<!-- //已登录并订阅 -->
+				<!-- 未登录时 -->
+				<div id="notLoginSubs" class="col-md-8 col-md-offset-4">
+					<form class="form-inline">
+						<div class="col-md-6 col-sm-6">
+							<button id="registSubs" type="button" class="btn btn-default btn-block">点击登录</button>
+						</div>
+					</form>
+				</div>
+				<!-- //未登录时 -->
+			</div>
+		</div>
+	</div>
+<!-- //subscribe订阅模块 -->
+
+	<!-- 底部 -->
+	<footer id="fh5co-footer" role="contentinfo">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-4 fh5co-widget">
+					<h3>LiveInYouth - 聆青</h3>
+					<p>历经青年互动科技有限公司是一个新型的互联网公司，它通过一个泛社区化的感觉分享网站——聆青网，专注于向15-30岁的青年以及30-50岁的泛青年群体提供一个感觉分享的互联网平台。</p>
+					<p><a href="/LiveInYouth/main/about.html">关于 聆青</a></p>
+				</div>
+				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
+					<ul class="fh5co-footer-links">
+						<li><a href="http://www.w3school.com.cn">W3School</a></li>
+						<li><a href="http://www.runoob.com/">Runoob</a></li>
+						<li><a href="http://www.iteye.com/">ITeye</a></li>
+						<li><a href="http://www.jb51.net/">Jb51</a></li>
+						<li><a href="http://freehtml5.co">FreeHtml5</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
+					<ul class="fh5co-footer-links">
+						<li><a href="https://leetcode.com/">LeetCode</a></li>
+						<li><a href="http://stackoverflow.com/">StackOverFlow</a></li>
+						<li><a href="https://www.v2ex.com/">v2ex</a></li>
+						<li><a href="https://git.oschina.net/">OsChina</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
+					<ul class="fh5co-footer-links">
+						<li><a href="http://weibo.com/ixenos">Weibo</a></li>
+						<li><a href="http://www.cnblogs.com/ixenos/">Cnblogs</a></li>
+						<li><a href="https://www.zhihu.com/people/ixenos/">Zhihu</a></li>
+						<li><a href="https://github.com/ixenos">GitHub</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block">&copy; 2017 LiveInYouth. All Rights Reserved.</small><br />
+						<a href="http://github.com/ixenos/" target="_blank">历经青年公司</a> 版权所有 
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	<!-- //底部 -->
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+	<!-- cookie操作工具，用于登录判断 -->	
+	<script src="/LiveInYouth/util/js/cookie/js.cookie-2.1.4.min.js"></script>
+	<!-- 订阅模块js -->
+	<script src="js/lvy.subscribe.js"></script>
+	<!-- 本页面js -->
+	<script src="js/services.js"></script>
+	
+	</body>
+</html>
+

@@ -1,0 +1,39 @@
+{
+	"updated":"true",
+    "hitSongTitle":"5月热门",
+    "hitSongs":[
+        {
+        	"songId":"6",
+            "songName":"放空",
+            "hitCmt":"我不愿意去触碰那些我不喜欢的身体，回应毫无感觉的词句，去拥抱那些我未为之心动过的灵魂",
+            "albumImgSrc":"/LiveInYouth/images/discoverMusic/hitSong/albumImg/fanxiaoxuan_fangkong.png",
+            "songSrc":"/LiveInYouth/audio/mp3/范晓萱 - 放空.mp3",
+            "clickCount":"6482",
+            "cmtCount":"1993",
+            "viaCount":"2393",
+            "thumpCount":"4352"
+        },
+        {
+        	"songId":"5",
+            "songName":"虚拟",
+            "hitCmt":"你是我朝夕相伴触手可及的虚拟 你是我未曾拥有无法捕捉的亲昵",
+            "albumImgSrc":"/LiveInYouth/images/discoverMusic/hitSong/albumImg/chenli_xuni.png",
+            "songSrc":"/LiveInYouth/audio/mp3/陈粒 - 虚拟.mp3",
+            "clickCount":"8977",
+            "cmtCount":"2017",
+            "viaCount":"3098",
+            "thumpCount":"4275"
+        },
+        {
+        	"songId":"2",
+            "songName":"落花流水",
+            "hitCmt":"流水很清楚 惜花这个责任 真的身份不过送运 这趟旅行若算开心 亦是无负这一生",
+            "albumImgSrc":"/LiveInYouth/images/discoverMusic/hitSong/albumImg/chenyixun_luohualiushui.png",
+            "songSrc":"/LiveInYouth/audio/mp3/陈奕迅 - 落花流水.mp3",
+            "clickCount":"7423",
+            "cmtCount":"2011",
+            "viaCount":"3794",
+            "thumpCount":"6352"
+        }
+    ]
+}

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.service.UploadService;
 import com.ixenos.lvy.service.impl.UploadServiceImpl;
@@ -22,6 +24,10 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/Upload")
 public class Upload extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(Upload.class);
 	
 	/*
 	 * uploadService
@@ -39,7 +45,6 @@ public class Upload extends HttpServlet {
 	 */
 	public Upload() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -54,13 +59,12 @@ public class Upload extends HttpServlet {
 		
 		Object userName = session.getAttribute("userName");
 		if (userName == null) {
-			System.out.println("未登录，禁止使用上传服务");// TODO
+			logger.info("未登录，禁止使用上传服务");
 			return;
 		}
 		
 		String type = request.getParameter("type");
-		System.out.println("upload时，type是： " + type);//TODO
-
+		logger.info("upload时，type是： " + type);
 		
 		if("listCover".equals(type)){
 			/*

@@ -2,6 +2,8 @@ package com.ixenos.lvy.service.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.FmData;
 import com.ixenos.lvy.bean.JplayerData;
 import com.ixenos.lvy.bean.SongList;
@@ -22,6 +24,11 @@ import com.ixenos.lvy.service.PrivateFMService;
  *
  */
 public class PrivateFMServiceImpl implements PrivateFMService{
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(PrivateFMServiceImpl.class);
+	
 	/*
 	 * songDao
 	 */
@@ -61,9 +68,9 @@ public class PrivateFMServiceImpl implements PrivateFMService{
 		//先校验songListId存不存在，在songList表校验
 		Object flag = songListDao.getSongListBySongListId(songListId);
 		
-		System.out.println("songListId是：　" + songListId);//TODO
+		logger.info("songListId是：　" + songListId);
 		if(flag == null){
-			System.out.println("songListId不存在，默认加载id=1的列表");//TODO
+			logger.info("songListId不存在，默认加载id=1的列表");
 			songListId = 1;//不存在的id则默认加载id=1的
 		}
 		

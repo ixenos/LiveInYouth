@@ -1,5 +1,7 @@
 package com.ixenos.lvy.service.impl;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.ServicesData;
 import com.ixenos.lvy.bean.Song;
 import com.ixenos.lvy.bean.SongList;
@@ -20,6 +22,11 @@ import com.ixenos.lvy.service.ServicesService;
  *
  */
 public class ServicesServiceImpl implements ServicesService {
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(ServicesServiceImpl.class);
+	
 	/*
 	 * songListDao
 	 */
@@ -59,7 +66,7 @@ public class ServicesServiceImpl implements ServicesService {
 		if(songList == null){
 			serData.setSuccess("false");
 			serData.setUser(user);
-			System.out.println("订阅标志是：  " + user.getSubsFlag());//TODO
+			logger.info("订阅标志是：  " + user.getSubsFlag());
 			return serData;
 		}
 		serData.setSongList(songList);
@@ -82,7 +89,7 @@ public class ServicesServiceImpl implements ServicesService {
 			//新用户，创建新的id
 			int newListId = songListDao.createSongList();
 			if(newListId != -1){
-				System.out.println("创建歌单成功，歌单id是：" + newListId);//TODO
+				logger.info("创建歌单成功，歌单id是：" + newListId);
 				songList = new SongList();
 				songList.setSongListId(newListId);
 				songList.setUserId(user.getUserId());
@@ -91,7 +98,7 @@ public class ServicesServiceImpl implements ServicesService {
 				
 				user.setSongListId(newListId);//顺序
 			}else{
-				System.out.println("创建歌单失败");//TODO
+				logger.warn("创建歌单失败");
 				return new Object[]{false, user};
 			}
 		}
@@ -126,12 +133,12 @@ public class ServicesServiceImpl implements ServicesService {
 		
 		int newSongId = songDao.createSong();//创建新的song记录
 		if(newSongId != -1){
-			System.out.println("创建歌曲成功，id是：" + newSongId);//TODO
+			logger.info("创建歌曲成功，id是：" + newSongId);
 			song.setSongId(newSongId);
 			//更新songlistmap
 			songListMapDao.addSongAndListMap(song, songList);
 		}else{
-			System.out.println("创建歌单失败");//TODO
+			logger.warn("创建歌单失败");
 			return false;
 		}
 		return songDao.updateSongByBean(song);//更新songDao

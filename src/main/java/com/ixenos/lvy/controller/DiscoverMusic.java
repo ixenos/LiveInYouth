@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.HitCmtData;
 import com.ixenos.lvy.bean.HitSongData;
 import com.ixenos.lvy.bean.SoleMvData;
@@ -24,6 +26,10 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/DiscoverMusic")
 public class DiscoverMusic extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(DiscoverMusic.class);
 
 	/*
 	 * DiscoverMusicService
@@ -62,7 +68,7 @@ public class DiscoverMusic extends HttpServlet {
 			SoleMvData soleMvData = (SoleMvData) LvyJsonUtil.jsonToObj(filePath, SoleMvData.class);//独家MV模块数据（源文件、未经更新判断）
 			serData = (SoleMvData) dmService.soleMvSer(soleMvData, filePath); // 经过更新判断后的独家MV模块数据
 			if(serData == null){
-				System.out.println("数据错误或更新失败");//TODO
+				logger.error("数据错误或更新失败");
 				return;
 			}
 			
@@ -72,7 +78,7 @@ public class DiscoverMusic extends HttpServlet {
 			HitSongData hitSongData = (HitSongData) LvyJsonUtil.jsonToObj(filePath, HitSongData.class);//热门单曲模块数据（源文件、未经更新判断）
 			serData = (HitSongData) dmService.hitSongSer(hitSongData, filePath); // 经过更新判断后的热门单曲模块数据
 			if(serData == null){
-				System.out.println("数据错误或更新失败");//TODO
+				logger.error("数据错误或更新失败");
 				return;
 			}
 		
@@ -83,7 +89,7 @@ public class DiscoverMusic extends HttpServlet {
 			serData = (HitCmtData) dmService.hitCmtSer(hitCmtData, filePath);
 			
 		} else {
-			System.out.println("非法参数");// TODO
+			logger.error("非法参数");
 			return;
 		}
 		LvyJsonUtil.objToJsonResponse(serData, response);// 设置返回的MIME，并把bean转成JSON，输出到响应报文中

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.Comment;
 import com.ixenos.lvy.dao.CommentDao;
 import com.ixenos.lvy.util.JdbcUtil;
@@ -17,7 +19,11 @@ import com.ixenos.lvy.util.JdbcUtil;
  *
  */
 public class CommentDaoImpl implements CommentDao {
-
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(CommentDaoImpl.class);
+	
 	/**
 	 * 点赞
 	 */
@@ -34,7 +40,7 @@ public class CommentDaoImpl implements CommentDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("更新赞数失败");// TODO
+			logger.error("更新赞数失败");
 		} finally {
 			JdbcUtil.close(preStmt, conn);
 		}

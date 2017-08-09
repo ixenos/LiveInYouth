@@ -3,6 +3,8 @@ package com.ixenos.lvy.service.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.dao.UserDao;
 import com.ixenos.lvy.dao.impl.UserDaoImpl;
@@ -16,6 +18,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
  *
  */
 public class SubscribeServiceImpl implements SubscribeService {
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(SubscribeServiceImpl.class);
+	
 	/*
 	 * UserDao
 	 */
@@ -55,7 +62,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 			if (subsFlag) {
 				map.put("success", "true");
 				map.put("type", "subs");// 订阅成功
-				System.out.println("订阅成功");// TODO
+				logger.info("订阅成功");
 			} else {
 				map.put("success", "false");
 				map.put("type", "updateDao");// dao更新失败
@@ -115,7 +122,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 			if (cancelFlag) {
 				map.put("success", "true");
 				map.put("type", "cancel");// 订阅成功
-				System.out.println("退订成功");// TODO
+				logger.info("退订成功");
 			} else {
 				map.put("success", "false");
 				map.put("type", "updateDao");// dao更新失败

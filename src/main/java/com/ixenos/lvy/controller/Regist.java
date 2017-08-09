@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.bean.UserWithState;
 import com.ixenos.lvy.service.RegistService;
+import com.ixenos.lvy.service.impl.PrivateFMServiceImpl;
 import com.ixenos.lvy.service.impl.RegistServiceImpl;
 import com.ixenos.lvy.util.LvyJsonUtil;
 
@@ -23,6 +26,10 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/Regist")
 public class Regist extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(PrivateFMServiceImpl.class);
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -65,7 +72,7 @@ public class Regist extends HttpServlet {
 		RegistService registService = new RegistServiceImpl();
 		registInfoJson = registService.jsonForRegist(user);
 		if(registInfoJson==null){
-			System.out.println("取不到注册json信息");//TODO
+			logger.error("取不到注册json信息");
 			return;
 		}
 		// 输出响应

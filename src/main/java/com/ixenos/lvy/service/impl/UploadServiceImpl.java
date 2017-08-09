@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.RequestContext;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.servlet.ServletRequestContext;
+import org.apache.log4j.Logger;
 
 import com.ixenos.lvy.bean.Song;
 import com.ixenos.lvy.bean.SongList;
@@ -31,6 +32,11 @@ import com.ixenos.lvy.dao.impl.UserDaoImpl;
 import com.ixenos.lvy.service.UploadService;
 
 public class UploadServiceImpl implements UploadService {
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(UploadServiceImpl.class);
+	
 	/*
 	 * userDao
 	 */
@@ -94,14 +100,14 @@ public class UploadServiceImpl implements UploadService {
 				FileItem fileItem = it.next();
 				//普通表单内容
 				if (fileItem.isFormField()) {
-					System.out.println(fileItem.getFieldName() + "   " + fileItem.getName() + "   "
-							+ new String(fileItem.getString().getBytes("iso8859-1"), "gbk"));//TODO
+					logger.info(fileItem.getFieldName() + "   " + fileItem.getName() + "   "
+							+ new String(fileItem.getString().getBytes("iso8859-1"), "gbk"));
 				} 
 				//文件表单内容
 				else {
-					System.out.println(fileItem.getFieldName() + "   " + fileItem.getName() + "   "
-							+ fileItem.isInMemory() + "    " + fileItem.getContentType() + "   " + fileItem.getSize());//TODO
-
+					logger.info(fileItem.getFieldName() + "   " + fileItem.getName() + "   "
+							+ fileItem.isInMemory() + "    " + fileItem.getContentType() + "   " + fileItem.getSize());
+					
 					if (fileItem.getName() != null && fileItem.getSize() != 0) {
 						File fullFile = new File(fileItem.getName());
 						
@@ -126,25 +132,25 @@ public class UploadServiceImpl implements UploadService {
 								songList.setSongListImgSrc(relativeFilePath);
 								songListDao.updateSongListByBean(songList);
 								
-								System.out.println("songList保存成功");//TODO
+								logger.info("songList保存成功");
 								
 							}else if("avatar".equals(type)){
 								user.setAvatarSrc(relativeFilePath);
 								userDao.updateUserByBean(user);
 								
-								System.out.println("user保存成功");//TODO
+								logger.info("user保存成功");
 								
 							}else if("audio".equals(type)){
 								//从sonlistMap获取无源歌曲（现在暴力一点，只认为只有一首新增的是无源）
 								List<Integer> list = songListMapDao.getNoneSrcSongId(user.getSongListId());
 								if(list == null){
-									System.out.println("list是空的");//TODO
+									logger.info("list是空的");
 									return false;
 								}
 								int songId = list.get(0);
 								Song song = songDao.getSongById(songId);//上传时首
 								
-								System.out.println("what the fucck?--->" + relativeFilePath);
+								logger.debug("what the fucck?--->" + relativeFilePath);
 								
 								song.setSongSrc(relativeFilePath);
 								songDao.updateSongByBean(song);
@@ -152,10 +158,10 @@ public class UploadServiceImpl implements UploadService {
 								//song有src了，在map表更改src_flag
 								boolean flag = songListMapDao.changeNoneSrcFlag(songId, true);
 								if(flag){
-									System.out.println("song保存成功，但map表没有更改src_flag");//TODO
+									logger.error("song保存成功，但map表没有更改src_flag");
 									return false;
 								}
-								System.out.println("song保存成功");//TODO
+								logger.info("song保存成功");
 							}else{
 								return false;
 							}
@@ -165,7 +171,7 @@ public class UploadServiceImpl implements UploadService {
 							e.printStackTrace();
 						}
 					} else {
-						System.out.println("文件没有选择 或 文件内容为空");//TODO
+						logger.warn("文件没有选择 或 文件内容为空");
 					}
 				}
 			}

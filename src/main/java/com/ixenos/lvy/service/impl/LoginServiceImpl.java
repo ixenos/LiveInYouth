@@ -7,6 +7,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.dao.LoginDao;
 import com.ixenos.lvy.dao.impl.LoginDaoImpl;
@@ -21,6 +23,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
  *
  */
 public class LoginServiceImpl implements LoginService {
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(LoginServiceImpl.class); 
+	
 	/*
 	 * LoginDao
 	 */
@@ -53,22 +60,22 @@ public class LoginServiceImpl implements LoginService {
 				if (passwordFlag) {
 					jsonMap.put("success", "true");// map的key是唯一的
 					jsonMap.put("type", "successLogin");
-					System.out.println("登录成功，用户：" + user.getUserName() + " 登录成功");// TODO
+					logger.info("登录成功，用户：" + user.getUserName() + " 登录成功");
 					return new Object[] { LvyJsonUtil.simpleMapToJson(jsonMap), true, formatFlag };// 验证成功,true
 				} else {
 					jsonMap.put("success", "false");
 					jsonMap.put("type", "wrongPassword");// 密码错误,false
-					System.out.println("登录失败，用户：" + user.getUserName() + " 密码错误");// TODO
+					logger.error("登录失败，用户：" + user.getUserName() + " 密码错误");
 				}
 			} else {
 				jsonMap.put("success", "false");
 				jsonMap.put("type", "notExist");// 不存在的账户名,false
-				System.out.println("登录失败，用户：" + user.getUserName() + " 不存在");// TODO
+				logger.error("登录失败，用户：" + user.getUserName() + " 不存在");
 			}
 		} else {
 			jsonMap.put("success", "flase");
 			jsonMap.put("type", "wrongFormat");// 校验失败，false,前端没做好输入限制
-			System.out.println("登录失败，用户名或邮箱、密码格式错误");// TODO 用log替代
+			logger.error("登录失败，用户名或邮箱、密码格式错误");
 		}
 		return new Object[] { LvyJsonUtil.simpleMapToJson(jsonMap), false, formatFlag }; // 验证失败
 	}
@@ -127,8 +134,8 @@ public class LoginServiceImpl implements LoginService {
 						}
 						Cookie sessIdCookie = new Cookie("JSESSIONID", session.getId());// 重写主要是为了覆盖原来的值，然后才能使用setMaxAge来设定cookie端的存活时间
 						
-						System.out.println("sessionID是" + sessIdCookie.getValue()); // TODO
-
+						logger.info("sessionID是" + sessIdCookie.getValue());
+						
 						session.setMaxInactiveInterval(30 * 24 * 60 * 60);// 设置服务端session的会话时间
 						nameCookie.setMaxAge(30 * 24 * 60 * 60);
 						sessIdCookie.setMaxAge(30 * 24 * 60 * 60);// 设置浏览器端的cookie的存活时间30天（以匹配服务端的会话）
@@ -137,15 +144,15 @@ public class LoginServiceImpl implements LoginService {
 						sessIdCookie.setPath("/LiveInYouth");// 表示作用的范围
 						response.addCookie(nameCookie);
 						response.addCookie(sessIdCookie);
-						System.out.println("自动登录设置完成");// TODO log替代
+						logger.info("自动登录设置完成");
 					} else {
 						/*
 						 * 非自动登录状态时，保存用户信息直，生命周期和自然session一致（浏览器关闭，前端sessionID失效
 						 * ，后端不设置超时一定时间就自动销毁）
 						 */
 						// 我们只需要返回非sessionID的cookie
-						System.out.println("sessionID是" + session.getId()); // TODO
-
+						logger.info("sessionID是" + session.getId());
+						
 						Cookie nameCookie = null;
 						if (nameOrEamilFlag == 1) {
 							session.setAttribute("userName", existUser.getUserName());// session持久化
@@ -158,10 +165,10 @@ public class LoginServiceImpl implements LoginService {
 						nameCookie.setMaxAge(2 * 60 * 60);// cookie有效时间两个小时，够了
 						nameCookie.setPath("/LiveInYouth");
 						response.addCookie(nameCookie);
-						System.out.println("非自动登录设置完成");// TODO log替代
+						logger.info("非自动登录设置完成");
 					}
 				} else {
-					System.out.println("用name或email取不出existUser");// TODO
+					logger.error("用name或email取不出existUser");
 				}
 			}
 		} else {
@@ -182,12 +189,12 @@ public class LoginServiceImpl implements LoginService {
 					jsonMap.put("success", "true");
 					jsonMap.put("type", "successLogin");
 					loginInfoJson = LvyJsonUtil.simpleMapToJson(jsonMap);
-					System.out.println("自动登录成功");// TODO 用log替代
+					logger.info("自动登录成功");
 				}
 				// session中没有对应的userName，说明没有选择自动登录
 			} else {
 				// 新session
-				System.out.println("如果session是新的，但是密码却为空，那么一般是前端的空值限制失败了，或者后端服务器重启了，导致session销毁");// TODO
+				logger.warn("如果session是新的，但是密码却为空，那么一般是前端的空值限制失败了，或者后端服务器重启了，导致session销毁");
 				loginInfoJson = LvyJsonUtil.simpleMapToJson(jsonMap);
 			}
 		}

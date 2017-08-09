@@ -3,6 +3,8 @@ package com.ixenos.lvy.service.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.dao.CollectDao;
 import com.ixenos.lvy.dao.impl.CollectDaoImpl;
@@ -16,6 +18,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
  *
  */
 public class CollectServiceImpl implements CollectService {
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(CollectServiceImpl.class); 
+	
 	/*
 	 * collectDao
 	 */
@@ -68,20 +75,20 @@ public class CollectServiceImpl implements CollectService {
 		//String jsonInfo = null;
 		Map<String, String> map = new HashMap<>();
 		if(collStatus == 0){
-			System.out.println("用户为空");
+			logger.warn("用户为空");
 			return null;
 		}else if (collStatus == 1) {
 			map.put("success", "false");
 			map.put("type", "hasColl");//已收藏
-			System.out.println("已收藏");// TODO
+			logger.info("已收藏");
 		} else if (collStatus == 2) {
 			map.put("success", "true");
 			map.put("type", "coll");//收藏成功
-			System.out.println("收藏成功");// TODO test
+			logger.info("收藏成功");
 		} else if (collStatus == 3) {
 			map.put("success", "true");
 			map.put("type", "fail");//收藏失败
-			System.out.println("收藏失败"); // TODO test
+			logger.info("收藏失败");
 		}
 		return LvyJsonUtil.simpleMapToJson(map);
 	}

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.service.CollectService;
 import com.ixenos.lvy.service.impl.CollectServiceImpl;
@@ -24,6 +26,10 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/Collect")
 public class Collect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(Collect.class); 
 	/*
 	 * 收藏服务
 	 */
@@ -44,9 +50,10 @@ public class Collect extends HttpServlet {
 		HttpSession session = request.getSession();//获取会话
 		
 		String songListId = request.getParameter("songListId");
-		System.out.println("get songListId: " + songListId);// TODO test
+		logger.info("get songListId: " + songListId);
 		String type = request.getParameter("type");
-		System.out.println("get type: " + type);// TODO test
+		logger.info("get type: " + type);
+		
 		/*
 		 * 登录判断
 		 */
@@ -64,13 +71,13 @@ public class Collect extends HttpServlet {
 		String jsonInfo = null;//响应数据
 		if ("listColl".equals(type)) {
 			jsonInfo = colService.jsonForListColl(Integer.valueOf(songListId), user);
-			System.out.println("coll json is: " + jsonInfo);//TODO test
+			logger.info("coll json is: " + jsonInfo);
 			if(jsonInfo == null){
-				System.out.println("用户为null? at Collect");//TODO
+				logger.warn("用户为null? at Collect");
 				return;
 			}
 		}else{
-			System.out.println("参数异常 at Collect controller");//TODO test
+			logger.error("参数异常 at Collect controller");
 			return;
 		}
 		LvyJsonUtil.jsonToResponse(jsonInfo, response); //成败响应

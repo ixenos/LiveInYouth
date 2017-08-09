@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.service.SubscribeService;
 import com.ixenos.lvy.service.impl.SubscribeServiceImpl;
@@ -22,6 +24,10 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/Subscribe")
 public class Subscribe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(Subscribe.class);
 
 	/*
 	 * SubscribeService
@@ -59,34 +65,34 @@ public class Subscribe extends HttpServlet {
 		/*
 		 * 根据会话中是否存在指定用户会话来进行判断
 		 */
-		User user = (User) session.getAttribute("user");// TODO 可以在这里判断user是否存在，从而更快速地返回信息
+		User user = (User) session.getAttribute("user");
 
 		String jsonInfo = null;
 		if (user == null) {
-			System.out.println("用户未登录，进入此流程非法；可能是服务器重启了，也可能是前台在试探"); // TODO
+			logger.fatal("用户未登录，进入此流程非法；可能是服务器重启了，也可能是前台在试探");
 			jsonInfo = "{\"success\":\"false\" , \"type\":\"sessionNull\"}";
 		} else {
 			if ("subs".equals(type)) {
 				jsonInfo = subsService.subscribe(user);
 				if (jsonInfo == null) {
-					System.out.println("订阅失败，后台错误");// TODO
+					logger.error("订阅失败，后台错误");
 					return;
 				}
 			} else if ("ifSubs".equals(type)) {
 				jsonInfo = subsService.ifSubscribe(user);
 				if (jsonInfo == null) {
-					System.out.println("查询是否订阅失败，后台错误");// TODO
+					logger.error("查询是否订阅失败，后台错误");
 					return;
 				}
 			} else if("cancelSubs".equals(type)){
 				jsonInfo = subsService.cancelSubscribe(user);
 				if(jsonInfo == null){
-					System.out.println("退订失败，后台错误");//TODO
+					logger.error("退订失败，后台错误");
 					return;
 				}
 				
 			} else{
-				System.out.println("非法参数");//TODO
+				logger.warn("非法参数");
 				return;
 			}
 		}

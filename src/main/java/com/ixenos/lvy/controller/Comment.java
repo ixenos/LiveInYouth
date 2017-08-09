@@ -7,6 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.service.CommentService;
 import com.ixenos.lvy.service.impl.CommentServiceImpl;
 
@@ -18,6 +21,11 @@ import com.ixenos.lvy.service.impl.CommentServiceImpl;
 @WebServlet("/Comment")
 public class Comment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(Comment.class); 
+	
 	/*
 	 * comment服务
 	 */
@@ -44,18 +52,18 @@ public class Comment extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String commentId = request.getParameter("commentId");
-		System.out.println("get commentId: " + commentId);// TODO test
+		logger.info("get commentId: " + commentId);
 		String thumpUp = request.getParameter("thumpUp");
-		System.out.println("get thumpUp: " + thumpUp);// TODO test
+		logger.info("get thumpUp: " + thumpUp);
 		
 		if ("1".equals(thumpUp)) {
-			System.out.println("开始点赞");// TODO test
+			logger.info("开始点赞");
 			if (cmtService.thumpUp(Integer.valueOf(commentId))) {
-				System.out.println("点赞成功");// TODO test
+				logger.info("点赞成功");
 			} else {
-				System.out.println("点赞失败"); // TODO test
+				logger.error("点赞失败");
 			}
-			System.out.println("结束点赞");// TODO test
+			logger.info("结束点赞");
 		}
 	}
 

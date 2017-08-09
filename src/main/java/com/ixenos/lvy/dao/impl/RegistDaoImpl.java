@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.dao.RegistDao;
 import com.ixenos.lvy.util.JdbcUtil;
@@ -15,6 +17,11 @@ import com.ixenos.lvy.util.JdbcUtil;
  *
  */
 public class RegistDaoImpl implements RegistDao{
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(RegistDaoImpl.class);
+	
 	/**
 	 * 判断是否已存在用户
 	 * 
@@ -69,7 +76,7 @@ public class RegistDaoImpl implements RegistDao{
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("insertUser失败");//TODO 用log替代
+			logger.error("insertUser失败");
 		}finally{
 			JdbcUtil.close(null, preStmt, conn);
 		}

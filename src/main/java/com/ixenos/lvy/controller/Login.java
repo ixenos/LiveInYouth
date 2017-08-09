@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.bean.UserWithState;
 import com.ixenos.lvy.service.LoginService;
@@ -23,6 +25,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(Login.class); 
+	
 	/*
 	 * 登录服务
 	 */
@@ -60,12 +67,12 @@ public class Login extends HttpServlet {
 		String loginInfoJson = null;// 给前端的JSON
 
 		User user = (UserWithState) LvyJsonUtil.jsonToObj(request, UserWithState.class);// 前端JSON转Bean
-		System.out.println("前端输入：用户名： " + user.getUserName() + "； 用户密码：" + user.getUserPassword() + "； 进行自动登录设置："
-				+ user.isAutoLogin());// TODO 用log替代
+		logger.info("前端输入：用户名： " + user.getUserName() + "； 用户密码：" + user.getUserPassword() + "； 进行自动登录设置："
+				+ user.isAutoLogin());
 		
 		loginInfoJson = lgService.jsonForLogin(user, session, response);// 返回登录的JSON信息
 		if(loginInfoJson == null){
-			System.out.println("数据错误或更新失败");//TODO
+			logger.error("数据错误或更新失败");
 			return;
 		}
 		LvyJsonUtil.jsonToResponse(loginInfoJson, response);// 输出JSON响应

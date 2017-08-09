@@ -3,6 +3,8 @@ package com.ixenos.lvy.service.impl;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.Comment;
 import com.ixenos.lvy.bean.HitCmtData;
 import com.ixenos.lvy.bean.HitSong;
@@ -26,6 +28,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
  *
  */
 public class DiscoverMusicServiceImpl implements DiscoverMusicService {
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(DiscoverMusicServiceImpl.class); 
+	
 	/*
 	 * CommentDAO
 	 */
@@ -107,7 +114,7 @@ public class DiscoverMusicServiceImpl implements DiscoverMusicService {
 			LvyJsonUtil.objToJsonFile(soleMvData, new File("/WEB-INF/hitSongData.json"));
 
 		} else {
-			System.out.println("updated填入了非法参数，请在true/false中选择");// TODO
+			logger.warn("updated填入了非法参数，请在true/false中选择");
 		}
 		return soleMvData;
 	}
@@ -183,11 +190,11 @@ public class DiscoverMusicServiceImpl implements DiscoverMusicService {
 			soleMvData.setUpdated("true");//更改更新标志为已更新
 
 		} else {
-			System.out.println("updated填入了非法参数，请在true/false中选择");// TODO
+			logger.warn("updated填入了非法参数，请在true/false中选择");
 		}
 		// 再写回JSON文件中（将soleMvData这个对象保存到json文件中)
 		LvyJsonUtil.objToJsonFile(soleMvData, new File(filePath));
-		System.out.println("soleMv 更新成功");//TODO
+		logger.info("soleMv 更新成功");
 		return soleMvData;
 	}
 	
@@ -249,12 +256,12 @@ public class DiscoverMusicServiceImpl implements DiscoverMusicService {
 				 */
 				int albumId = songDao.getOtherIdById(hitSong.getSongId(), "ALBUM_ID");
 				if(albumId == 0){
-					System.out.println("更新失败，albumId不存在");//TODO
+					logger.error("更新失败，albumId不存在");
 					return null;
 				}
 				String albumImgSrc = albumDao.getAlbumImgSrcById(albumId);
 				if(albumImgSrc == null){
-					System.out.println("更新失败，albumImgSrc不存在");//TODO
+					logger.error("更新失败，albumImgSrc不存在");
 					return null;
 				}
 				hitSong.setAlbumImgSrc(albumImgSrc);
@@ -262,7 +269,7 @@ public class DiscoverMusicServiceImpl implements DiscoverMusicService {
 				//song表，根据对应歌曲的id
 				Song song = songDao.getSongById(hitSong.getSongId());
 				if(song == null){
-					System.out.println("更新失败，song获取失败");//TODO
+					logger.error("更新失败，song获取失败");
 					return null;
 				}
 				hitSong.setClickCount(song.getClickCount());
@@ -277,7 +284,7 @@ public class DiscoverMusicServiceImpl implements DiscoverMusicService {
 			hitSongData.setUpdated("true");//更改更新标志为已更新
 			
 		} else {
-			System.out.println("updated填入了非法参数，请在true/false中选择");// TODO
+			logger.warn("updated填入了非法参数，请在true/false中选择");
 		}
 		//再写回JSON文件中（将soleMvData这个对象保存到json文件中) //TODO 失败   
 		LvyJsonUtil.objToJsonFile(hitSongData, new File(filePath));

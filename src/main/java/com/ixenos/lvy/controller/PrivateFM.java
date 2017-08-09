@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.service.PrivateFMService;
 import com.ixenos.lvy.service.impl.PrivateFMServiceImpl;
@@ -20,7 +22,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/PrivateFM")
 public class PrivateFM extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(PrivateFM.class); 
+	
 	/*
 	 * PrivateFmService
 	 */
@@ -50,7 +56,7 @@ public class PrivateFM extends HttpServlet {
 		
 		Object serData = null;
 		if(type==null){
-			System.out.println("前端输入错误");//TODO
+			logger.warn("前端输入错误");
 			return;
 		}else{
 			if("otherList".equals(type) && songListId!=null){

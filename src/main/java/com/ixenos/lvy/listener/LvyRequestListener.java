@@ -17,7 +17,6 @@ public class LvyRequestListener implements ServletRequestListener {
      * Default constructor. 
      */
     public LvyRequestListener() {
-        // TODO Auto-generated constructor stub
     }
        
     /**
@@ -25,7 +24,6 @@ public class LvyRequestListener implements ServletRequestListener {
      */
     public LvyRequestListener(HttpSession source) {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -39,7 +37,6 @@ public class LvyRequestListener implements ServletRequestListener {
      * @see ServletRequestListener#requestDestroyed(ServletRequestEvent)
      */
     public void requestDestroyed(ServletRequestEvent sre)  { 
-         // TODO Auto-generated method stub
     }
 
 	

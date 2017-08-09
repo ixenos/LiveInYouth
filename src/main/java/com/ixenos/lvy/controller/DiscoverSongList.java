@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.SongListData;
 import com.ixenos.lvy.service.DiscoverSongListService;
 import com.ixenos.lvy.service.impl.DiscoverSongListServiceImpl;
@@ -22,7 +24,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/DiscoverSongList")
 public class DiscoverSongList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(DiscoverSongList.class); 
+	
 	/*
 	 * discoverSonglist服务
 	 */
@@ -39,7 +45,6 @@ public class DiscoverSongList extends HttpServlet {
      */
     public DiscoverSongList() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -61,12 +66,12 @@ public class DiscoverSongList extends HttpServlet {
 			SongListData songListData = (SongListData) LvyJsonUtil.jsonToObj(filePath, SongListData.class);//九宫格模块数据（源文件、未经更新判断）
 			serData = (SongListData) dslService.songListSer(songListData, filePath); // 经过更新判断后的九宫格模块数据
 			if(serData == null){
-				System.out.println("数据错误或更新失败");//TODO
+				logger.error("数据错误或更新失败");
 				return;
 			}
 			
 		} else {
-			System.out.println("非法参数");// TODO
+			logger.warn("非法参数");
 			return;
 		}
 		LvyJsonUtil.objToJsonResponse(serData, response);// 设置返回的MIME，并把bean转成JSON，输出到响应报文中
@@ -76,7 +81,6 @@ public class DiscoverSongList extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

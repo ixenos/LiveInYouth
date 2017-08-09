@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.ServicesData;
 import com.ixenos.lvy.bean.Song;
 import com.ixenos.lvy.bean.SongList;
@@ -25,7 +27,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
 @WebServlet("/Services")
 public class Services extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(Services.class);
+	
 	/*
 	 * ServicesService
 	 */
@@ -43,7 +49,6 @@ public class Services extends HttpServlet {
      */
     public Services() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -57,20 +62,19 @@ public class Services extends HttpServlet {
 		Object serData = null;
 		
 		if(type==null){
-			System.out.println("前端输入错误");//TODO
+			logger.warn("前端输入错误");
 			return;
 		}else if("cancelLogin".equals(type)){
 			//session.invalidate();//销毁session
 			session.removeAttribute("user");
 			user = (User)session.getAttribute("user");
 			session.removeAttribute("userName");
-			System.out.println("成功退出的的登录");//TODO
-			
+			logger.info("成功退出的的登录");
 		}else if("initData".equals(type)){//初始化数据
 			//初始化表单数据展示
 			ServicesData sersData = sersService.initServicesData(user);
 			if(sersData == null){
-				System.out.println("sersData为空");//TODO
+				logger.warn("sersData为空");
 				return;
 			}
 			serData = sersData;
@@ -81,8 +85,8 @@ public class Services extends HttpServlet {
 			modSongList.setListName(request.getParameter("subListName"));
 			modSongList.setListIntro(request.getParameter("subListIntro"));
 			
-			System.out.println("修改的list名：" + modSongList.getListName());//TODO
-			System.out.println("修改的list简介： " + modSongList.getListIntro());//TODO
+			logger.info("修改的list名：" + modSongList.getListName());
+			logger.info("修改的list简介： " + modSongList.getListIntro());
 			
 			Object[] flags = sersService.modBaseList(user, modSongList);
 			
@@ -111,7 +115,7 @@ public class Services extends HttpServlet {
 			String subUserName = request.getParameter("subUserName");
 			user.setUserName(subUserName);
 			
-			System.out.println("修改的用户名： " + subUserName);//TODO
+			logger.info("修改的用户名： " + subUserName);
 			
 			boolean flag = sersService.modBaseUser(user);
 			/*
@@ -132,9 +136,9 @@ public class Services extends HttpServlet {
 			String subArtistName = request.getParameter("subArtistName");
 			String subAlbumName = request.getParameter("subAlbumName");
 			
-			System.out.println("上传的歌曲名： " + subSongName);//TODO
-			System.out.println("上传的歌曲的歌手名" + subArtistName);//TODO
-			System.out.println("上传的歌曲的专辑名" + subAlbumName);//TODO
+			logger.info("上传的歌曲名： " + subSongName);
+			logger.info("上传的歌曲的歌手名" + subArtistName);
+			logger.info("上传的歌曲的专辑名" + subAlbumName);
 			
 			//表单信息实例化
 			Song song = new Song();

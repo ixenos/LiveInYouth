@@ -3,6 +3,8 @@ package com.ixenos.lvy.service.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.ixenos.lvy.bean.User;
 import com.ixenos.lvy.dao.RegistDao;
 import com.ixenos.lvy.dao.impl.RegistDaoImpl;
@@ -17,6 +19,11 @@ import com.ixenos.lvy.util.LvyJsonUtil;
  *
  */
 public class RegistServiceImpl implements RegistService {
+	/*
+	 * log4j
+	 */
+	private static Logger logger = Logger.getLogger(RegistServiceImpl.class);
+	
 	/*
 	 * RegistDao
 	 */
@@ -46,21 +53,21 @@ public class RegistServiceImpl implements RegistService {
 					// 返回注册成功信息 前端提示登录
 					jsonMap.put("success", "true");//更改注册成败标志
 					jsonMap.put("type", "successInsert");//插入成功
-					System.out.println("用户："+ user.getUserName() +" 插入成功");//TODO 用log替代
+					logger.info("用户："+ user.getUserName() +" 插入成功");
 				} else {
 					jsonMap.put("success", "false");
 					jsonMap.put("type", "notInsert");//插入失败
-					System.out.println("用户："+ user.getUserName() +" 插入失败");//TODO 用log替代
+					logger.error("用户："+ user.getUserName() +" 插入失败");
 				}
 			} else {
 				jsonMap.put("success", "false");
 				jsonMap.put("type", "userExist");//账号已存在
-				System.out.println("用户："+ user.getUserName() +" 已存在");//TODO 用log替代
+				logger.warn("用户："+ user.getUserName() +" 已存在");
 			}
 		}else{
 			jsonMap.put("success", "false");
 			jsonMap.put("type", "wrongFormat");//格式错误
-			System.out.println("账号、密码或邮箱格式错误");//TODO 用log替代
+			logger.warn("账号、密码或邮箱格式错误");
 		}
 		return LvyJsonUtil.simpleMapToJson(jsonMap);
 	}
